@@ -1,5 +1,6 @@
 ---
-# Example only: documentation IP addresses; replace with lab management IPs.
+# Example only: documentation IP addresses.
+# Replace them with lab management IPs.
 # Do not store credentials in this file.
 all:
   children:
@@ -17,5 +18,8 @@ all:
         ansible_user: netops
         ansible_become: true
         ansible_become_method: enable
-# For a lab run, prompt for passwords instead of saving them:
-# ansible-playbook -i inventory/network-devices.example.yml playbooks/precheck-network.yml --ask-pass --ask-become-pass
+
+# For a lab run, prompt for passwords instead of saving them.
+# Run this command from the 03-ansible directory:
+# ansible-playbook -i inventory/network-devices.example.yml \
+#   playbooks/precheck-network.yml --ask-pass --ask-become-pass
