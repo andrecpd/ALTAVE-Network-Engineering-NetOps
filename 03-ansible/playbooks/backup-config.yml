@@ -1,0 +1,14 @@
+---
+- name: Back up running configuration from Cisco IOS / IOS XE lab devices
+  hosts: cisco_ios
+  gather_facts: false
+  tasks:
+    - name: Create a local configuration backup on the Ansible control node
+      cisco.ios.ios_config:
+        backup: true
+      register: backup_result
+
+    - name: Report backup location
+      ansible.builtin.debug:
+        msg: "Backup created on the control node: {{ backup_result.backup_path | default('check task output for backup path') }}"
+      changed_when: false
