@@ -1,0 +1,43 @@
+name: Network code validation
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate network prefixes
+        run: |
+          python 04-python/validate_networks.py \
+            10.10.10.0/24 \
+            10.20.10.0/24 \
+            10.100.0.0/16
+
+      - name: Install Ansible tooling
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install ansible ansible-lint yamllint
+
+      - name: Check YAML syntax
+        run: yamllint -s 03-ansible
+
+      - name: Check Ansible playbook syntax
+        run: ansible-playbook --syntax-check 03-ansible/playbooks/validate-lab.yml -i 03-ansible/inventory/lab.yml
+
+      - name: Run Ansible Lint
+        run: ansible-lint 03-ansible/playbooks/validate-lab.yml
