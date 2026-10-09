@@ -1,0 +1,16 @@
+---
+lab_name: altave-netops-lab-01
+lab_environment: pnetlab
+lab_controller_name: NETOPS
+
+# Flat list: every prefix must be unique and non-overlapping.
+lab_networks:
+  - 192.168.100.0/24  # management
+  - 10.10.10.0/24     # Site A LAN
+  - 10.20.20.0/24     # Site B LAN
+  - 10.255.0.0/30     # R1-R2 routed transit
+
+audit_commands:
+  - show version
+  - show ip interface brief
+  - show ip route
