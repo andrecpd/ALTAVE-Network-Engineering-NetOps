@@ -1,0 +1,20 @@
+---
+- name: Prepare local evidence directory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    lab_root: "{{ playbook_dir }}/.."
+  tasks:
+    - name: Create local artifacts directory
+      ansible.builtin.file:
+        path: "{{ lab_root }}/artifacts"
+        state: directory
+        mode: "0750"
+
+- name: Read-only audit of IOS lab routers
+  hosts: routers
+  gather_facts: false
+  serial: 1
+  roles:
+    - network_audit
