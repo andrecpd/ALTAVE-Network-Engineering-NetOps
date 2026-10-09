@@ -1,0 +1,32 @@
+---
+- name: Read-only precheck for Cisco IOS / IOS XE lab devices
+  hosts: cisco_ios
+  gather_facts: false
+  tasks:
+    - name: Gather device facts
+      cisco.ios.ios_facts:
+        gather_subset:
+          - min
+          - interfaces
+
+    - name: Collect interface summary
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief
+          - show interfaces description
+      register: interface_summary
+      changed_when: false
+
+    - name: Print device identity
+      ansible.builtin.debug:
+        msg:
+          - "Host: {{ inventory_hostname }}"
+          - "Model: {{ ansible_net_model | default('unknown') }}"
+          - "IOS version: {{ ansible_net_version | default('unknown') }}"
+          - "Serial: {{ ansible_net_serialnum | default('unknown') }}"
+      changed_when: false
+
+    - name: Print interface summary
+      ansible.builtin.debug:
+        var: interface_summary.stdout_lines
+      changed_when: false
