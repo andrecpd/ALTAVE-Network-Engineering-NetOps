@@ -1,0 +1,12 @@
+# IPs reservados para documentação; troque pelos endereços reais do seu laboratório.
+devices:
+  - name: lab-router-01
+    host: 192.0.2.11
+    device_type: cisco_ios
+    port: 22
+    enabled: true
+  - name: lab-router-02
+    host: 192.0.2.12
+    device_type: cisco_ios
+    port: 22
+    enabled: false
