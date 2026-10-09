@@ -1,0 +1,25 @@
+---
+- name: Collect read-only operational commands
+  cisco.ios.ios_command:
+    commands: "{{ network_audit_commands }}"
+  register: network_audit_result
+  changed_when: false
+
+- name: Save command output as local evidence
+  ansible.builtin.copy:
+    content: |
+      LAB: {{ lab_name | default('lab-01') }}
+      DEVICE: {{ inventory_hostname }}
+      MANAGEMENT_IP: {{ ansible_host | default('not-set') }}
+      COLLECTED_AT_UTC: {{ now(utc=true, fmt='%Y-%m-%dT%H:%M:%SZ') }}
+
+      {% for index in range(network_audit_commands | length) %}
+      ============================================================
+      COMMAND: {{ network_audit_commands[index] }}
+      ============================================================
+      {{ network_audit_result.stdout[index] | default('No output returned') }}
+
+      {% endfor %}
+    dest: "{{ network_audit_artifact_dir }}/{{ inventory_hostname }}-audit.txt"
+    mode: "0640"
+  delegate_to: localhost
