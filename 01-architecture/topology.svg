@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">Topologia de referência — ALTAVE Network Engineering NetOps</title>
+<desc id="desc">Diagrama de arquitetura híbrida de laboratório com unidades remotas, links WAN, túneis IPsec, AWS VPC, plano de automação e observabilidade.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1220"/><stop offset="1" stop-color="#17243a"/></linearGradient>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d4ed8"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+  <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f766e"/><stop offset="1" stop-color="#0d9488"/></linearGradient>
+  <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6d28d9"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#020617" flood-opacity=".35"/></filter>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#93c5fd"/></marker>
+  <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#5eead4"/></marker>
+  <style>
+    .heading{font:700 30px Arial,sans-serif;fill:#f8fafc}.sub{font:16px Arial,sans-serif;fill:#cbd5e1}
+    .boxTitle{font:700 20px Arial,sans-serif;fill:#fff}.text{font:16px Arial,sans-serif;fill:#e2e8f0}.small{font:14px Arial,sans-serif;fill:#cbd5e1}
+    .label{font:700 15px Arial,sans-serif;fill:#bfdbfe}.line{fill:none;stroke:#93c5fd;stroke-width:4;marker-end:url(#arrow)}
+    .vpn{fill:none;stroke:#5eead4;stroke-width:4;stroke-dasharray:12 8;marker-end:url(#arrowGreen)}
+  </style>
+</defs>
+<rect width="1600" height="1000" rx="24" fill="url(#bg)"/>
+<text x="64" y="62" class="heading">ARQUITETURA DE REFERÊNCIA | NETWORK ENGINEERING &amp; NETOPS</text>
+<text x="64" y="94" class="sub">Rede híbrida de laboratório • segmentação • conectividade resiliente • automação • observabilidade</text>
+<rect x="60" y="130" width="440" height="440" rx="22" fill="#111c2f" stroke="#334155" stroke-width="2"/>
+<text x="88" y="170" class="boxTitle">UNIDADES / EDGE</text>
+<rect x="90" y="200" width="180" height="145" rx="14" fill="url(#blue)" filter="url(#shadow)"/>
+<text x="110" y="232" class="boxTitle">Unidade A</text><text x="110" y="260" class="text">LAN 10.10.10.0/24</text><text x="110" y="287" class="small">Gateway / Firewall</text><text x="110" y="312" class="small">Link primário + backup*</text>
+<rect x="290" y="200" width="180" height="145" rx="14" fill="url(#blue)" filter="url(#shadow)"/>
+<text x="310" y="232" class="boxTitle">Unidade B</text><text x="310" y="260" class="text">LAN 10.20.10.0/24</text><text x="310" y="287" class="small">Gateway / Firewall</text><text x="310" y="312" class="small">Link primário + backup*</text>
+<rect x="90" y="385" width="380" height="130" rx="14" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+<text x="112" y="418" class="boxTitle">WAN / ISP / Internet</text><text x="112" y="448" class="text">Links com latência variável, perda e jitter</text><text x="112" y="477" class="small">Monitorar disponibilidade e qualidade do caminho</text>
+<path d="M180 345 V365 H215 V385" class="line"/><path d="M380 345 V365 H340 V385" class="line"/>
+<rect x="565" y="190" width="410" height="345" rx="22" fill="#102c32" stroke="#0f766e" stroke-width="2"/>
+<text x="595" y="230" class="boxTitle">CONECTIVIDADE SEGURA</text>
+<rect x="600" y="260" width="340" height="92" rx="14" fill="url(#teal)" filter="url(#shadow)"/>
+<text x="625" y="295" class="boxTitle">Túneis IPsec site-to-site</text><text x="625" y="324" class="text">IKEv2 • rotas • DPD • rekey</text>
+<rect x="600" y="380" width="160" height="100" rx="12" fill="#164e63" stroke="#0891b2"/>
+<text x="620" y="414" class="boxTitle">Routing</text><text x="620" y="441" class="small">Rotas ida/volta</text><text x="620" y="462" class="small">Failover testado</text>
+<rect x="780" y="380" width="160" height="100" rx="12" fill="#164e63" stroke="#0891b2"/>
+<text x="800" y="414" class="boxTitle">Security</text><text x="800" y="441" class="small">ACL / Firewall</text><text x="800" y="462" class="small">Least privilege</text>
+<path d="M500 435 H565" class="vpn"/><path d="M760 430 H780" class="line"/>
+<rect x="1040" y="130" width="500" height="440" rx="22" fill="#151d3a" stroke="#4f46e5" stroke-width="2"/>
+<text x="1070" y="170" class="boxTitle">CLOUD — AWS (LAB)</text>
+<rect x="1080" y="200" width="420" height="335" rx="18" fill="#202c4a" stroke="#6366f1" stroke-width="2" stroke-dasharray="9 6"/>
+<text x="1105" y="234" class="boxTitle">VPC 10.100.0.0/16</text>
+<rect x="1110" y="260" width="170" height="110" rx="12" fill="url(#purple)"/>
+<text x="1128" y="292" class="boxTitle">Subnet privada A</text><text x="1128" y="321" class="text">10.100.1.0/24</text><text x="1128" y="347" class="small">Workloads internos</text>
+<rect x="1300" y="260" width="170" height="110" rx="12" fill="url(#purple)"/>
+<text x="1318" y="292" class="boxTitle">Subnet privada B</text><text x="1318" y="321" class="text">10.100.2.0/24</text><text x="1318" y="347" class="small">Serviços privados</text>
+<rect x="1110" y="400" width="360" height="95" rx="12" fill="#312e81" stroke="#818cf8"/>
+<text x="1130" y="434" class="boxTitle">Route tables + Security Groups</text><text x="1130" y="463" class="text">Rotas explícitas • DNS • logs de fluxo</text>
+<path d="M975 310 H1040" class="vpn"/><path d="M1195 370 V400" class="line"/><path d="M1385 370 V400" class="line"/>
+<rect x="60" y="620" width="720" height="300" rx="22" fill="#172337" stroke="#475569" stroke-width="2"/>
+<text x="90" y="662" class="boxTitle">PLANO DE AUTOMAÇÃO / NETOPS</text>
+<rect x="90" y="695" width="145" height="90" rx="12" fill="#334155"/><text x="110" y="730" class="boxTitle">Git</text><text x="110" y="757" class="small">Versionamento</text>
+<rect x="255" y="695" width="145" height="90" rx="12" fill="#1d4ed8"/><text x="275" y="730" class="boxTitle">CI/CD</text><text x="275" y="757" class="small">Lint / tests</text>
+<rect x="420" y="695" width="145" height="90" rx="12" fill="#0f766e"/><text x="440" y="730" class="boxTitle">Ansible</text><text x="440" y="757" class="small">Roles / playbooks</text>
+<rect x="585" y="695" width="155" height="90" rx="12" fill="#6d28d9"/><text x="605" y="730" class="boxTitle">Python</text><text x="605" y="757" class="small">Validações</text>
+<path d="M235 740 H255" class="line"/><path d="M400 740 H420" class="line"/><path d="M565 740 H585" class="line"/>
+<text x="92" y="830" class="text">Mudança proposta → revisão → validação → aprovação → execução controlada</text><text x="92" y="862" class="small">Segredos fora do Git • backup antes da mudança • rollback e auditoria</text>
+<rect x="820" y="620" width="720" height="300" rx="22" fill="#172337" stroke="#475569" stroke-width="2"/>
+<text x="850" y="662" class="boxTitle">OBSERVABILIDADE / SRE</text>
+<rect x="850" y="695" width="190" height="90" rx="12" fill="#164e63"/><text x="870" y="730" class="boxTitle">Zabbix / Prometheus</text><text x="870" y="757" class="small">Métricas / disponibilidade</text>
+<rect x="1060" y="695" width="190" height="90" rx="12" fill="#334155"/><text x="1080" y="730" class="boxTitle">Grafana</text><text x="1080" y="757" class="small">Dashboards / tendências</text>
+<rect x="1270" y="695" width="230" height="90" rx="12" fill="#7f1d1d"/><text x="1290" y="730" class="boxTitle">Alertas / Runbooks</text><text x="1290" y="757" class="small">Resposta e recuperação</text>
+<path d="M1040 740 H1060" class="line"/><path d="M1250 740 H1270" class="line"/>
+<text x="852" y="830" class="text">SLI: disponibilidade, RTT, perda, jitter, uso de banda e estado VPN</text><text x="852" y="862" class="small">Correlacionar métricas com mudanças e incidentes</text>
+<path d="M770 620 V580 H785 V535" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M1180 620 V590 H1290 V570" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="64" y="960" class="small">* Redundância de links depende do ambiente. Todos os CIDRs são fictícios e destinados exclusivamente a laboratório.</text>
+</svg>
