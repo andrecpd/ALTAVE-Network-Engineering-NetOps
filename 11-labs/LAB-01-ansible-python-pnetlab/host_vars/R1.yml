@@ -1,0 +1,5 @@
+---
+device_role: edge_router
+site: site_a
+management_ip: 192.168.100.11
+expected_lan_prefix: 10.10.10.0/24
