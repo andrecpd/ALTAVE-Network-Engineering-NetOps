@@ -1,0 +1,16 @@
+# Local inventories and credentials
+inventory/network-devices.local.yml
+inventory/*production*.yml
+vault-password-file
+.vault_pass
+*.vault
+vault.yml
+
+# Generated output
+*.retry
+*.log
+backups/
+artifacts/
+.ansible/
+.venv/
+__pycache__/
