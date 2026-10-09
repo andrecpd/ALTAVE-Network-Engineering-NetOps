@@ -1,0 +1,3 @@
+artifacts/*-audit.txt
+__pycache__/
+*.py[cod]
