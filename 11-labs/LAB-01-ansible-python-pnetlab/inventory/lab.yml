@@ -1,0 +1,20 @@
+---
+all:
+  children:
+    routers:
+      vars:
+        ansible_connection: ansible.netcommon.network_cli
+        ansible_network_os: cisco.ios.ios
+        ansible_user: labops
+      hosts:
+        R1:
+          ansible_host: 192.168.100.11
+        R2:
+          ansible_host: 192.168.100.12
+    # Endpoints document the topology; automation for VPCS is not configured.
+    endpoints:
+      hosts:
+        PC-A:
+          ansible_host: 10.10.10.10
+        PC-B:
+          ansible_host: 10.20.20.10
