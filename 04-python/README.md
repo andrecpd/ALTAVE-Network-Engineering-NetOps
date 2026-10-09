@@ -29,6 +29,7 @@ Módulo prático de Python aplicado à engenharia de redes, com foco em automaç
 ├── README.md
 ├── topology-python.svg
 ├── requirements.txt
+├── validate_networks.py
 ├── pyproject.toml
 ├── .env.example
 ├── .gitignore
@@ -86,6 +87,16 @@ python -m netops.collect_facts --inventory inventory/lab.yml --output reports/fa
 ```
 
 O exemplo executa comandos de leitura (`show version` e `show ip interface brief`) e grava os resultados em JSON. A pasta `reports/` é gerada localmente e ignorada pelo Git. Não use credenciais reais em demonstrações ou gravações de tela.
+
+## Validador de prefixos IPv4/IPv6
+
+O script inicial `validate_networks.py` usa apenas a biblioteca padrão do Python para validar CIDRs e apontar sobreposição de prefixos. Exemplo:
+
+```bash
+python validate_networks.py 10.10.10.0/24 10.20.10.0/24 10.100.0.0/16
+```
+
+O retorno `0` indica que os prefixos são válidos e não se sobrepõem; `1` indica sobreposição; `2` indica entrada inválida. Ele é útil para revisar planos de endereçamento antes de mudanças.
 
 ## Testes e qualidade
 
