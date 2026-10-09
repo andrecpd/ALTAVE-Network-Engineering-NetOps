@@ -16,5 +16,7 @@
   hosts: routers
   gather_facts: false
   serial: 1
-  roles:
-    - network_audit
+  tasks:
+    - name: Run the reusable network audit role
+      ansible.builtin.include_role:
+        name: "{{ playbook_dir }}/../roles/network_audit"
