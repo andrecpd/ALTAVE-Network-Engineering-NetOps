@@ -10,5 +10,8 @@
 
     - name: Report backup location
       ansible.builtin.debug:
-        msg: "Backup created on the control node: {{ backup_result.backup_path | default('check task output for backup path') }}"
+        msg: >-
+          Backup created on the control node:
+          {{ backup_result.backup_path
+             | default('check task output for backup path') }}
       changed_when: false
