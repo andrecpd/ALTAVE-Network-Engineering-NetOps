@@ -1,0 +1,5 @@
+---
+# Shared defaults for network devices. Keep credentials in Ansible Vault or prompt securely.
+ansible_connection: ansible.netcommon.network_cli
+ansible_command_timeout: 30
+ansible_connect_timeout: 20
