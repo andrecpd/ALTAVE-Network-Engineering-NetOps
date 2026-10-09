@@ -1,0 +1,18 @@
+---
+- name: Validate the automation host without changing network devices
+  hosts: lab_linux
+  gather_facts: true
+  tasks:
+    - name: Show managed host identity
+      ansible.builtin.debug:
+        msg:
+          - "Host: {{ inventory_hostname }}"
+          - "OS: {{ ansible_distribution | default('unknown') }}"
+          - "Python: {{ ansible_python_version | default('unknown') }}"
+
+    - name: Confirm the lab playbook is reachable
+      ansible.builtin.assert:
+        that:
+          - ansible_system is defined
+        success_msg: "Lab validation passed."
+        fail_msg: "Ansible facts were not collected."
