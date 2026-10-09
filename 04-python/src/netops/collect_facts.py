@@ -104,7 +104,7 @@ def main() -> int:
         LOG.info("Coleta somente leitura: %s (%s)", device["name"], device["host"])
         results.append(collect_device(device, username, password))
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(results, indent=2, ensure_ascii=False) + "\\n", encoding="utf-8")
+    args.output.write_text(json.dumps(results, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     succeeded = sum(item["status"] == "success" for item in results)
     LOG.info("Resultado: %s/%s dispositivos; saída: %s", succeeded, len(results), args.output)
     return 0 if succeeded == len(results) else 1
