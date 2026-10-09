@@ -1,1 +1,4 @@
-# The initial IP/CIDR validator uses only the Python standard library.
+netmiko>=4.4,<5
+PyYAML>=6.0,<7
+pytest>=8,<9
+ruff>=0.9,<1
