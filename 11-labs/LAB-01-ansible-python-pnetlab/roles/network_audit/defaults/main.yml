@@ -1,0 +1,6 @@
+---
+network_audit_commands:
+  - show version
+  - show ip interface brief
+  - show ip route
+network_audit_artifact_dir: "{{ playbook_dir }}/../artifacts"
