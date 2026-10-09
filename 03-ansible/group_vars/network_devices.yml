@@ -1,0 +1,8 @@
+---
+# Shared defaults for network devices. Keep credentials in Ansible Vault.
+ansible_connection: ansible.netcommon.network_cli
+ansible_command_timeout: 30
+ansible_connect_timeout: 20
+gather_facts: false
+
+# Do not define passwords here. Load secrets from an encrypted Vault file.
